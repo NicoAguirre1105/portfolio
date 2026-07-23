@@ -3,8 +3,18 @@ export interface ProjectMetric {
   label: string;
 }
 
+export interface CaseStudyOverlay {
+  before: string;
+  decision: string[];
+  architecture: string;
+  after: string;
+  stack: string[];
+  note: string;
+}
+
 export const airecomprimido = {
   tag: "b2b" as const,
+  tagLabel: "B2B",
   title: "AIRECOMPRIMIDO EC S.A.S",
   cardDescription:
     "Sistema de reportes de mantenimiento con QR físico en cada compresor: el técnico escanea y ve el historial al instante. El cliente cobra un precio premium citando ese historial como diferenciador.",
@@ -25,18 +35,34 @@ export const airecomprimido = {
       "Las re-solicitudes de reportes bajaron a cero: el dato vive donde está la máquina, no en un inbox. Las cotizaciones generadas desde el sitio subieron 30% desde el lanzamiento. Y el efecto que más le importa al cliente: ahora cobra un precio premium por su servicio, citando el historial transparente como diferenciador frente a otros proveedores —verificable por cualquiera que escanee el compresor.",
     stack: ["Next.js", "TypeScript", "Supabase", "cPanel"],
     note: "Que el sistema fuera fácil de mantener era un requisito, no un extra: el equipo de AIRECOMPRIMIDO —sin conocimiento técnico— da de alta unidades nuevas, genera su QR y carga reportes desde el panel admin, sin depender de mí para el día a día.",
-  },
+  } as CaseStudyOverlay,
 };
 
 export const mafiaAzulgrana = {
   tag: "community" as const,
-  title: "Mafia Azulgrana",
-  description:
-    "Comunidad de hinchas del Barça con calendario de partidos, chat y noticias. El panel admin todavía está en desarrollo.",
+  tagLabel: "COMMUNITY",
+  title: "Mafia Azul Grana",
+  cardDescription:
+    "Portal centralizado para la hinchada de Deportivo Quito: resultados, plantilla y cánticos digitalizados que antes vivían repartidos entre varias cuentas y un papel impreso en la cancha.",
   metrics: [
-    { value: "1.2k", label: "usuarios activos" },
-    { value: "+40%", label: "asistencia a eventos" },
+    { value: "+740", label: "visitas/semana" },
+    { value: "+5640", label: "page views/semana" },
+    { value: "97/100", label: "experience score" },
   ] as ProjectMetric[],
+  overlay: {
+    before:
+      "Deportivo Quito juega en Segunda Categoría y casi ningún medio lo cubre: encontrar la tabla de posiciones, la plantilla o los resultados en un solo lugar confiable era casi imposible. Puertas adentro, Mafia Azul Grana —el grupo que organiza las marchas y los cánticos— tenía el mismo problema: su presencia estaba repartida entre varias cuentas que se reposteaban entre sí, y los cánticos, el corazón de su identidad, solo existían en papel repartido una vez en la cancha —si no ibas a ese partido, te quedabas sin aprenderlo.",
+    decision: [
+      "El pedido no era 'un sitio para Mafia Azul Grana' —eran dos problemas de información con la misma causa raíz: la hinchada no encontraba datos básicos del club en ningún lado confiable, y los seguidores del grupo no podían armarse una imagen completa sin cruzar reposts entre varias cuentas. Abrir una cuenta más, o un canal de WhatsApp o Telegram, solo habría sumado un canal disperso más —no resolvía la fragmentación.",
+      "La decisión fue centralizar todo en una plataforma propia y usar las redes existentes como puerta de entrada, no como destino final. La pieza clave: digitalizar los cánticos. Algo que antes vivía en un papel repartido una vez, en un partido específico, pasa a estar disponible siempre —cualquiera puede aprenderse un cántico antes de ir a la cancha, sin haber estado en el partido donde se repartió.",
+    ],
+    architecture:
+      "Next.js sostiene un sitio de contenido rápido y fácil de encontrar —noticias, resultados, cánticos, merch— porque gran parte del descubrimiento llega desde un link en redes, no de alguien buscando el sitio directamente. Supabase estructura ese contenido para que crecer no signifique reescribir el sistema desde cero. Vercel saca a Mafia Azul Grana del problema de mantener servidores —un grupo que se sostiene con donaciones y venta de indumentaria, no con presupuesto de infraestructura. Y TypeScript reduce el margen de error en algo tan simple como un resultado o una posición mal cargada, que en una comunidad que revisa el sitio activamente se nota de inmediato.",
+    after:
+      "El sitio recibe 740+ visitas y 5.640+ page views por semana, con un experience score de 97/100 en Vercel Speed Insights. La adopción no vino de una campaña de difusión: la gente llegó desde las mismas cuentas dispersas que ya seguía, y el newsletter convirtió esa visita única en un hábito, sin tener que volver a revisar varias fuentes.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Vercel"],
+    note: "Lo maneja el propio grupo —la gente que organiza las marchas y compone los cánticos, no desarrolladores. Resultados, posts y cánticos se gestionan enteramente desde el panel admin, sin que nadie del equipo toque código ni dependa de mí para el día a día.",
+  } as CaseStudyOverlay,
 };
 
 export const tertiaryProjects = [

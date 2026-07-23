@@ -8,28 +8,36 @@ import { AboutSection } from "./components/AboutSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 import { ProjectOverlay } from "./components/ProjectOverlay";
+import { airecomprimido, mafiaAzulgrana } from "./data/content";
+
+const caseStudies = {
+  airecomprimido,
+  mafia: mafiaAzulgrana,
+};
+
+type CaseStudyId = keyof typeof caseStudies;
 
 export default function Home() {
-  const [overlayOpen, setOverlayOpen] = useState(false);
+  const [activeCaseStudy, setActiveCaseStudy] = useState<CaseStudyId | null>(null);
 
-  const openOverlay = () => {
-    window.history.pushState({}, "", "#/proyectos/airecomprimido");
-    setOverlayOpen(true);
+  const openOverlay = (id: CaseStudyId) => {
+    window.history.pushState({}, "", `#/proyectos/${id}`);
+    setActiveCaseStudy(id);
   };
 
   const closeOverlay = () => {
     window.history.pushState({}, "", window.location.pathname + window.location.search);
-    setOverlayOpen(false);
+    setActiveCaseStudy(null);
   };
 
   useEffect(() => {
-    if (!overlayOpen) return;
+    if (!activeCaseStudy) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeOverlay();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [overlayOpen]);
+  }, [activeCaseStudy]);
 
   return (
     <div className="min-h-screen bg-bg">
@@ -39,7 +47,9 @@ export default function Home() {
       <AboutSection />
       <ContactSection />
       <Footer />
-      <ProjectOverlay open={overlayOpen} onClose={closeOverlay} />
+      {activeCaseStudy && (
+        <ProjectOverlay project={caseStudies[activeCaseStudy]} onClose={closeOverlay} />
+      )}
     </div>
   );
 }

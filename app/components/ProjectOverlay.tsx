@@ -1,9 +1,18 @@
 import { Chip, Metric, Tag } from "./ui";
-import { airecomprimido } from "../data/content";
+import type { airecomprimido, mafiaAzulgrana } from "../data/content";
 
-export function ProjectOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
-  if (!open) return null;
+const eyebrowByTag = {
+  b2b: "Resultado de negocio",
+  community: "Resultado de comunidad",
+} as const;
 
+export function ProjectOverlay({
+  project,
+  onClose,
+}: {
+  project: typeof airecomprimido | typeof mafiaAzulgrana;
+  onClose: () => void;
+}) {
   return (
     <div
       onClick={onClose}
@@ -23,23 +32,21 @@ export function ProjectOverlay({ open, onClose }: { open: boolean; onClose: () =
         </button>
 
         <div className="flex flex-col gap-2.5">
-          <Tag tone={airecomprimido.tag}>B2B</Tag>
+          <Tag tone={project.tag}>{project.tagLabel}</Tag>
           <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-faint">
-            Resultado de negocio
+            {eyebrowByTag[project.tag]}
           </span>
-          <h2 className="font-sans text-[clamp(22px,3.5vw,28px)] font-bold">
-            {airecomprimido.title}
-          </h2>
+          <h2 className="font-sans text-[clamp(22px,3.5vw,28px)] font-bold">{project.title}</h2>
         </div>
 
         <div className="flex flex-col gap-3">
           <span className="text-lg font-bold">El problema</span>
-          <p className="text-sm leading-[1.7] text-ink-soft">{airecomprimido.overlay.before}</p>
+          <p className="text-sm leading-[1.7] text-ink-soft">{project.overlay.before}</p>
         </div>
 
         <div className="flex flex-col gap-3">
           <span className="text-lg font-bold">La decisión clave</span>
-          {airecomprimido.overlay.decision.map((paragraph) => (
+          {project.overlay.decision.map((paragraph) => (
             <p key={paragraph} className="text-sm leading-[1.7] text-ink-soft">
               {paragraph}
             </p>
@@ -48,33 +55,31 @@ export function ProjectOverlay({ open, onClose }: { open: boolean; onClose: () =
 
         <div className="flex flex-col gap-3">
           <span className="text-lg font-bold">Arquitectura</span>
-          <p className="text-sm leading-[1.7] text-ink-soft">
-            {airecomprimido.overlay.architecture}
-          </p>
+          <p className="text-sm leading-[1.7] text-ink-soft">{project.overlay.architecture}</p>
         </div>
 
         <div className="flex flex-wrap gap-[clamp(20px,4vw,40px)] border-y border-border py-5">
-          {airecomprimido.metrics.map((m) => (
-            <Metric key={m.label} value={m.value} label={m.label} color="b2b" />
+          {project.metrics.map((m) => (
+            <Metric key={m.label} value={m.value} label={m.label} color={project.tag} />
           ))}
         </div>
 
         <div className="flex flex-col gap-3">
           <span className="text-lg font-bold">El resultado</span>
-          <p className="text-sm leading-[1.7] text-ink-soft">{airecomprimido.overlay.after}</p>
+          <p className="text-sm leading-[1.7] text-ink-soft">{project.overlay.after}</p>
         </div>
 
         <div className="flex flex-col gap-3">
           <span className="text-lg font-bold">Stack</span>
           <div className="flex flex-wrap gap-2">
-            {airecomprimido.overlay.stack.map((tech) => (
+            {project.overlay.stack.map((tech) => (
               <Chip key={tech}>{tech}</Chip>
             ))}
           </div>
         </div>
 
         <p className="border-l-2 border-border pl-3 text-[13px] leading-relaxed text-ink-faint">
-          {airecomprimido.overlay.note}
+          {project.overlay.note}
         </p>
       </div>
     </div>
