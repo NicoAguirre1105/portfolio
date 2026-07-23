@@ -84,7 +84,7 @@ const buttonVariantClasses: Record<ButtonVariant, string> = {
 };
 
 const buttonBaseClasses =
-  "inline-flex items-center justify-center rounded-lg px-[22px] py-3 text-[13px] font-medium";
+  "inline-flex items-center justify-center rounded-lg px-[22px] py-3 text-[13px] font-medium disabled:cursor-not-allowed disabled:opacity-60";
 
 type ButtonProps = {
   variant?: ButtonVariant;

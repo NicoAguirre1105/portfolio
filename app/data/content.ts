@@ -60,6 +60,27 @@ export const about = {
   stack: ["React", "TypeScript", "Next.js", "Tailwind", "PostgreSQL", "Figma"],
 };
 
+export const countryCodes = [
+  { code: "+593", country: "Ecuador" },
+  { code: "+57", country: "Colombia" },
+  { code: "+51", country: "Perú" },
+  { code: "+52", country: "México" },
+  { code: "+54", country: "Argentina" },
+  { code: "+56", country: "Chile" },
+  { code: "+591", country: "Bolivia" },
+  { code: "+58", country: "Venezuela" },
+  { code: "+598", country: "Uruguay" },
+  { code: "+595", country: "Paraguay" },
+  { code: "+34", country: "España" },
+  { code: "+1", country: "Estados Unidos / Canadá" },
+  { code: "+55", country: "Brasil" },
+  { code: "+44", country: "Reino Unido" },
+  { code: "+49", country: "Alemania" },
+  { code: "+33", country: "Francia" },
+  { code: "+39", country: "Italia" },
+  { code: "+351", country: "Portugal" },
+];
+
 export const contactLinks = [
   { label: "Email", value: "hola@nicolasaguirre.dev", href: "mailto:hola@nicolasaguirre.dev" },
   { label: "Upwork", value: "Ver perfil", href: "#" },
