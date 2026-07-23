@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #faf7f1;
+  --color-surface: #f1ece3;
+  --color-border: #d8d2c4;
+  --color-ink: #211d17;
+  --color-ink-soft: #6e665a;
+  --color-ink-faint: #8c8272;
+
+  --color-b2b: #1e2a47;
+  --color-b2b-hover: #33456e;
+  --color-b2b-tag-bg: #e8eaf2;
+  --color-b2b-tag-ink: #1e2a47;
+
+  --color-community: #b85c2e;
+  --color-community-tag-bg: #f3e3d7;
+  --color-community-tag-ink: #6b3218;
+
+  --color-otros: #6e7a63;
+  --color-otros-tag-bg: #e9ece6;
+  --color-otros-tag-ink: #4e5a48;
+
+  /* ponytail: fixed to the light theme's --color-bg tone on purpose — primary
+     button text should stay whitish in both light and dark mode, so this one
+     does not get overridden in .dark below. */
+  --color-on-primary: #faf7f1;
+}
+
+.dark {
+  --color-bg: #17140f;
+  --color-surface: #211d17;
+  --color-border: #3a352c;
+  --color-ink: #f1ece3;
+  --color-ink-soft: #a69c8c;
+  --color-ink-faint: #726a5c;
+
+  --color-b2b: #5c7cc4;
+  --color-b2b-hover: #7c98d4;
+  --color-b2b-tag-bg: #232a3d;
+  --color-b2b-tag-ink: #a9bee8;
+
+  --color-community: #dd8b58;
+  --color-community-tag-bg: #3a2a1e;
+  --color-community-tag-ink: #f0c9a8;
+
+  --color-otros: #9aa68f;
+  --color-otros-tag-bg: #262b22;
+  --color-otros-tag-ink: #c4d0b9;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-border: var(--color-border);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-faint: var(--color-ink-faint);
+
+  --color-b2b: var(--color-b2b);
+  --color-b2b-hover: var(--color-b2b-hover);
+  --color-b2b-tag-bg: var(--color-b2b-tag-bg);
+  --color-b2b-tag-ink: var(--color-b2b-tag-ink);
+
+  --color-community: var(--color-community);
+  --color-community-tag-bg: var(--color-community-tag-bg);
+  --color-community-tag-ink: var(--color-community-tag-ink);
+
+  --color-otros: var(--color-otros);
+  --color-otros-tag-bg: var(--color-otros-tag-bg);
+  --color-otros-tag-ink: var(--color-otros-tag-ink);
+
+  --color-on-primary: var(--color-on-primary);
+
+  --font-sans: var(--font-pt-sans);
+  --font-mono: var(--font-pt-mono);
+  --font-heading: var(--font-unbounded);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@utility px-page {
+  padding-inline: clamp(20px, 5vw, 80px);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }

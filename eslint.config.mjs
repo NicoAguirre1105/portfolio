@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Exported claude.ai/design source — reference only, not built or served.
+    "design/**",
   ]),
 ]);
 

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300..900&family=PT+Sans:wght@400;700&family=PT+Sans:ital@0;1&family=PT+Mono:wght@400&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style id="__om-base">
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  a { color: inherit; text-decoration: none; }
+</style>
+</helmet>
+
+<div style="{{pageStyle}}">
+
+  <nav style="{{navStyle}}">
+    <div style="font-family:'PT Sans',sans-serif;font-weight:700;font-size:16px;{{textStyle}}">Nicolás Aguirre</div>
+    <div style="display:flex;align-items:center;gap:clamp(16px,3vw,32px);flex-wrap:wrap">
+      <a href="#proyectos" style="font-family:'PT Sans',sans-serif;font-size:13px;{{textSecondaryStyle}}" style-hover="{{linkHover}}">Proyectos</a>
+      <a href="#sobre-mi" style="font-family:'PT Sans',sans-serif;font-size:13px;{{textSecondaryStyle}}" style-hover="{{linkHover}}">Sobre mí</a>
+      <a href="#contacto" style="font-family:'PT Sans',sans-serif;font-size:13px;{{textSecondaryStyle}}" style-hover="{{linkHover}}">Contacto</a>
+      <div style="display:flex;align-items:center;gap:8px;font-family:'PT Mono',monospace;font-size:12px;{{textMutedStyle}}">
+        <span style="{{textStyle}};font-weight:500">ES</span>
+        <span>/</span>
+        <span>EN</span>
+        <span>/</span>
+        <span>RU</span>
+      </div>
+      <button onClick="{{toggleDark}}" aria-label="Cambiar tema" style="{{darkToggleStyle}}" style-hover="{{darkToggleHover}}">
+        <span style="{{darkDotStyle}}"></span>
+      </button>
+    </div>
+  </nav>
+
+  <header style="{{heroStyle}}">
+    <div style="font-family:'PT Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;{{b2bBaseStyle}}">Freelance frontend — B2B internal tools</div>
+    <h1 style="font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(28px,5vw,34px);line-height:1.3;letter-spacing:-0.01em;max-width:720px;{{textStyle}}">Construyo herramientas internas que resuelven problemas reales de negocio.</h1>
+    <p style="font-family:'PT Sans',sans-serif;font-size:15px;line-height:1.6;max-width:520px;{{textSecondaryStyle}}">Frontend freelance enfocado en paneles y flujos B2B. Menos demos, más sistemas que la gente usa todos los días.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+      <a href="#proyectos" style="{{ctaPrimaryStyle}}" style-hover="{{ctaPrimaryHover}}">Ver proyectos</a>
+      <a href="#contacto" style="{{ctaSecondaryStyle}}" style-hover="{{ctaSecondaryHover}}">Contactar</a>
+    </div>
+  </header>
+
+  <section id="proyectos" style="{{sectionStyle}}">
+
+    <div style="{{leadCardStyleClickable}}" onClick="{{openOverlay}}">
+      <div style="flex:1 1 380px;min-width:280px">
+        <image-slot id="airecomprimido-shot" shape="rounded" radius="12" placeholder="Captura del panel — Airecomprimido" style="width:100%;height:100%;min-height:280px"></image-slot>
+      </div>
+      <div style="flex:1 1 380px;min-width:280px;display:flex;flex-direction:column;gap:16px;justify-content:center">
+        <span style="{{tagStyleB2b}}">B2B</span>
+        <h2 style="font-family:'PT Sans',sans-serif;font-weight:700;font-size:clamp(20px,3vw,22px);{{textStyle}}">Airecomprimido</h2>
+        <p style="font-family:'PT Sans',sans-serif;font-size:14px;line-height:1.6;{{textSecondaryStyle}}">Reemplacé el proceso de reportes en PDF por un panel que genera cotizaciones en minutos. El cliente ahora cobra un premium por el tiempo de respuesta.</p>
+        <div style="display:flex;gap:clamp(20px,4vw,40px);flex-wrap:wrap;margin-top:8px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:'PT Mono',monospace;font-size:24px;font-weight:500;{{b2bBaseStyle}}">0</span>
+            <span style="font-family:'PT Sans',sans-serif;font-size:12px;{{textMutedStyle}}">re-solicitudes</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:'PT Mono',monospace;font-size:24px;font-weight:500;{{b2bBaseStyle}}">+30%</span>
+            <span style="font-family:'PT Sans',sans-serif;font-size:12px;{{textMutedStyle}}">cotizaciones cerradas</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:'PT Mono',monospace;font-size:24px;font-weight:500;{{b2bBaseStyle}}">615</span>
+            <span style="font-family:'PT Sans',sans-serif;font-size:12px;{{textMutedStyle}}">visitas/semana</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="{{secondaryCardStyle}}">
+      <div style="flex:1 1 320px;min-width:260px">
+        <image-slot id="mafia-shot" shape="rounded" radius="12" placeholder="Captura del sitio — Mafia Azulgrana" style="width:100%;height:100%;min-height:220px"></image-slot>
+      </div>
+      <div style="flex:1 1 320px;min-width:260px;display:flex;flex-direction:column;gap:14px;justify-content:center">
+        <span style="{{tagStyleCommunity}}">COMMUNITY</span>
+        <h3 style="font-family:'PT Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.4vw,19px);{{textStyle}}">Mafia Azulgrana</h3>
+        <p style="font-family:'PT Sans',sans-serif;font-size:14px;line-height:1.6;{{textSecondaryStyle}}">Comunidad de hinchas del Barça con calendario de partidos, chat y noticias. El panel admin todavía está en desarrollo.</p>
+        <div style="display:flex;gap:clamp(20px,4vw,40px);flex-wrap:wrap;margin-top:4px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:'PT Mono',monospace;font-size:20px;font-weight:500;{{communityBaseStyle}}">1.2k</span>
+            <span style="font-family:'PT Sans',sans-serif;font-size:12px;{{textMutedStyle}}">usuarios activos</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:'PT Mono',monospace;font-size:20px;font-weight:500;{{communityBaseStyle}}">+40%</span>
+            <span style="font-family:'PT Sans',sans-serif;font-size:12px;{{textMutedStyle}}">asistencia a eventos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="{{tertiaryGridStyle}}">
+      <div style="{{tertiaryCardStyle}}">
+        <image-slot id="cafe-shot" shape="rounded" radius="12" placeholder="Captura — Café Luchita" style="width:100%;height:180px"></image-slot>
+        <span style="{{tagStyleOtros}}">OTROS</span>
+        <h3 style="font-family:'PT Sans',sans-serif;font-weight:700;font-size:15px;{{textStyle}}">Café Luchita</h3>
+        <p style="font-family:'PT Sans',sans-serif;font-size:13px;line-height:1.6;{{textSecondaryStyle}}">Landing e identidad digital para una cafetería de especialidad.</p>
+      </div>
+      <div style="{{tertiaryCardStyle}}">
+        <image-slot id="bot-shot" shape="rounded" radius="12" placeholder="Captura — Telegram Bot" style="width:100%;height:180px"></image-slot>
+        <span style="{{tagStyleOtros}}">OTROS</span>
+        <h3 style="font-family:'PT Sans',sans-serif;font-weight:700;font-size:15px;{{textStyle}}">Telegram Bot</h3>
+        <p style="font-family:'PT Sans',sans-serif;font-size:13px;line-height:1.6;{{textSecondaryStyle}}">Bot para automatizar pedidos y notificaciones de un negocio pequeño.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="sobre-mi" style="{{sectionStyle}}">
+    <div style="max-width:640px;display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'PT Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;{{textMutedStyle}}">Sobre mí</span>
+      <p style="font-family:'PT Sans',sans-serif;font-size:15px;line-height:1.7;{{textSecondaryStyle}}">Vengo de matemática y ciencias de la computación — eso se nota en cómo pienso los sistemas antes de escribir una línea de CSS.</p>
+      <p style="font-family:'PT Sans',sans-serif;font-size:15px;line-height:1.7;{{textSecondaryStyle}}">Trabajo como freelance construyendo herramientas internas y paneles para negocios B2B: menos landing pages, más flujos que un equipo usa todos los días para cotizar, reportar o cerrar trabajo.</p>
+      <p style="font-family:'PT Sans',sans-serif;font-size:15px;line-height:1.7;{{textSecondaryStyle}}">Fuera de eso mantengo un par de proyectos propios — comunidad y bots — donde pruebo cosas sin el peso de un cliente encima.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="{{stackChipStyle}}">React</span>
+        <span style="{{stackChipStyle}}">TypeScript</span>
+        <span style="{{stackChipStyle}}">Next.js</span>
+        <span style="{{stackChipStyle}}">Tailwind</span>
+        <span style="{{stackChipStyle}}">PostgreSQL</span>
+        <span style="{{stackChipStyle}}">Figma</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" style="{{ctaFinalStyle}}">
+    <h2 style="font-family:'PT Sans',sans-serif;font-weight:700;font-size:clamp(22px,3.5vw,28px);max-width:520px;{{textStyle}}">¿Un problema real que resolver? Escríbeme.</h2>
+    <div style="{{contactGridStyle}}">
+      <form style="{{contactFormStyle}}" onSubmit="{{handleSubmit}}">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label style="{{formLabelStyle}}">Nombre</label>
+          <input type="text" placeholder="Tu nombre" style="{{formInputStyle}}"></input>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label style="{{formLabelStyle}}">Email</label>
+          <input type="email" placeholder="tu@email.com" style="{{formInputStyle}}"></input>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label style="{{formLabelStyle}}">Mensaje</label>
+          <textarea placeholder="Contame en qué estás trabajando" rows="4" style="{{formTextareaStyle}}"></textarea>
+        </div>
+        <button type="submit" style="{{ctaPrimaryStyle}};border:none;width:max-content" style-hover="{{ctaPrimaryHover}}">Enviar mensaje</button>
+      </form>
+
+      <div style="{{contactCardsColStyle}}">
+        <a href="mailto:hola@nicolasaguirre.dev" style="{{contactCardStyle}}" style-hover="{{contactCardHover}}">
+          <span style="{{formLabelStyle}}">Email</span>
+          <span style="font-family:'PT Sans',sans-serif;font-size:13px;{{textStyle}}">hola@nicolasaguirre.dev</span>
+        </a>
+        <a href="#" style="{{contactCardStyle}}" style-hover="{{contactCardHover}}">
+          <span style="{{formLabelStyle}}">Upwork</span>
+          <span style="font-family:'PT Sans',sans-serif;font-size:13px;{{textStyle}}">Ver perfil</span>
+        </a>
+        <a href="#" style="{{contactCardStyle}}" style-hover="{{contactCardHover}}">
+          <span style="{{formLabelStyle}}">Contra</span>
+          <span style="font-family:'PT Sans',sans-serif;font-size:13px;{{textStyle}}">Ver perfil</span>
+        </a>
+        <a href="#" style="{{contactCardStyle}}" style-hover="{{contactCardHover}}">
+          <span style="{{formLabelStyle}}">LinkedIn</span>
+          <span style="font-family:'PT Sans',sans-serif;font-size:13px;{{textStyle}}">Conectar</span>
+        </a>
+        <a href="#" style="{{contactCardStyle}}" style-hover="{{contactCardHover}}">
+          <span style="{{formLabelStyle}}">Telegram</span>
+          <span style="font-family:'PT Sans',sans-serif;font-size:13px;{{textStyle}}">@nicolasaguirre</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="{{footerStyle}}">
+    <span style="font-family:'PT Sans',sans-serif;font-weight:700;font-size:14px;{{textSecondaryStyle}}">Nicolás Aguirre</span>
+    <div style="display:flex;align-items:center;gap:8px;font-family:'PT Mono',monospace;font-size:11px;{{textMutedStyle}}">
+      <span style="{{textSecondaryStyle}};font-weight:500">ES</span><span>/</span><span>EN</span><span>/</span><span>RU</span>
+    </div>
+    <div style="display:flex;gap:16px;font-family:'PT Sans',sans-serif;font-size:13px;{{textSecondaryStyle}}">
+      <a href="#" style-hover="{{linkHover}}">Upwork</a>
+      <a href="#" style-hover="{{linkHover}}">Contra</a>
+      <a href="#" style-hover="{{linkHover}}">LinkedIn</a>
+    </div>
+    <span style="font-family:'PT Mono',monospace;font-size:11px;{{textMutedStyle}}">© 2026</span>
+  </footer>
+
+  <sc-if value="{{overlayOpen}}" hint-placeholder-val="{{false}}">
+    <div style="{{overlayBackdropStyle}}" onClick="{{closeOverlay}}">
+      <div style="{{overlayPanelStyle}}" onClick="{{stopPropagation}}">
+        <button onClick="{{closeOverlay}}" aria-label="Cerrar" style="{{overlayCloseStyle}}" style-hover="{{overlayCloseHover}}">
+          <span style="{{overlayCloseLineStyle}}"></span>
+          <span style="{{overlayCloseLineStyle2}}"></span>
+        </button>
+
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="{{tagStyleB2b}}">B2B</span>
+          <span style="{{overlayLabelStyle}}">Resultado de negocio</span>
+          <h2 style="{{overlayH2Style}}">Airecomprimido</h2>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <span style="{{overlaySubheadStyle}}">Antes</span>
+          <p style="{{overlayBodyStyle}}">El cliente cotizaba por PDF: cada solicitud implicaba ida y vuelta por correo, re-solicitudes por datos faltantes y varios días de espera antes de cerrar.</p>
+          <span style="{{overlaySubheadStyle}}">Después</span>
+          <p style="{{overlayBodyStyle}}">Reemplacé el proceso por un panel web donde el cliente arma la cotización en minutos, con validación en el momento. Cero re-solicitudes desde que está en producción, y ahora cobra un premium por el tiempo de respuesta.</p>
+        </div>
+
+        <div style="{{overlayMetricsRowStyle}}">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:'PT Mono',monospace;font-size:24px;font-weight:500;{{b2bBaseStyle}}">0</span>
+            <span style="font-family:'PT Sans',sans-serif;font-size:12px;{{textMutedStyle}}">re-solicitudes</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:'PT Mono',monospace;font-size:24px;font-weight:500;{{b2bBaseStyle}}">+30%</span>
+            <span style="font-family:'PT Sans',sans-serif;font-size:12px;{{textMutedStyle}}">cotizaciones cerradas</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:'PT Mono',monospace;font-size:24px;font-weight:500;{{b2bBaseStyle}}">615</span>
+            <span style="font-family:'PT Sans',sans-serif;font-size:12px;{{textMutedStyle}}">visitas/semana</span>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="{{overlaySubheadStyle}}">Proceso</span>
+          <p style="{{overlayBodyStyle}}">Empecé mapeando el flujo real de cotización con el cliente, no el que asumía que existía. El panel se construyó en iteraciones cortas, probando cada versión con cotizaciones reales antes de seguir.</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="{{overlaySubheadStyle}}">Stack</span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <span style="{{overlayChipStyle}}">React</span>
+            <span style="{{overlayChipStyle}}">TypeScript</span>
+            <span style="{{overlayChipStyle}}">Next.js</span>
+            <span style="{{overlayChipStyle}}">PostgreSQL</span>
+          </div>
+        </div>
+
+        <p style="{{overlayNoteStyle}}">El módulo de reportes históricos todavía está en desarrollo — por ahora el panel cubre cotización y seguimiento activo.</p>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { dark: false, overlayOpen: false };
+
+  componentDidMount() {
+    this._onKey = (e) => { if (e.key === 'Escape') this.closeOverlay(); };
+    window.addEventListener('keydown', this._onKey);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this._onKey);
+  }
+  openOverlay = () => {
+    this._prevHash = window.location.hash;
+    window.history.pushState({}, '', '#/proyectos/airecomprimido');
+    this.setState({ overlayOpen: true });
+  };
+  closeOverlay = () => {
+    window.history.pushState({}, '', window.location.pathname + window.location.search);
+    this.setState({ overlayOpen: false });
+  };
+
+  renderVals() {
+    const dark = this.state.dark;
+    const bg = dark ? '#17140F' : '#FAF7F1';
+    const surface = dark ? '#211D17' : '#F1ECE3';
+    const border = dark ? '#3A352C' : '#D8D2C4';
+    const text = dark ? '#F1ECE3' : '#211D17';
+    const textSecondary = dark ? '#A69C8C' : '#6E665A';
+    const textMuted = dark ? '#726A5C' : '#8C8272';
+
+    const b2bBase = dark ? '#5C7CC4' : '#1E2A47';
+    const b2bTagBg = dark ? '#232A3D' : '#E8EAF2';
+    const b2bTagText = dark ? '#A9BEE8' : '#1E2A47';
+
+    const communityBase = dark ? '#DD8B58' : '#B85C2E';
+    const communityTagBg = dark ? '#3A2A1E' : '#F3E3D7';
+    const communityTagText = dark ? '#F0C9A8' : '#6B3218';
+
+    const otrosBase = dark ? '#9AA68F' : '#6E7A63';
+    const otrosTagBg = dark ? '#262B22' : '#E9ECE6';
+    const otrosTagText = dark ? '#C4D0B9' : '#4E5A48';
+
+    const sidePad = 'clamp(20px,5vw,80px)';
+    const tagBase = 'font-family:\'PT Mono\',monospace;font-size:11px;font-weight:500;letter-spacing:0.05em;padding:4px 10px;border-radius:6px;width:max-content';
+
+    return {
+      pageStyle: `background:${bg};min-height:100vh;transition:background 0.2s`,
+      navStyle: `display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px ${sidePad};border-bottom:0.5px solid ${border};flex-wrap:wrap`,
+      heroStyle: `display:flex;flex-direction:column;gap:18px;padding:clamp(56px,10vw,110px) ${sidePad} clamp(48px,8vw,90px)`,
+      sectionStyle: `display:flex;flex-direction:column;gap:clamp(24px,4vw,32px);padding:clamp(40px,6vw,64px) ${sidePad};border-bottom:0.5px solid ${border}`,
+      ctaFinalStyle: `display:flex;flex-direction:column;gap:24px;padding:clamp(56px,9vw,96px) ${sidePad};border-bottom:0.5px solid ${border}`,
+      footerStyle: `display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px ${sidePad};flex-wrap:wrap`,
+
+      textStyle: `color:${text}`,
+      textSecondaryStyle: `color:${textSecondary}`,
+      textMutedStyle: `color:${textMuted}`,
+      linkHover: `color:${text}`,
+
+      b2bBaseStyle: `color:${b2bBase}`,
+      communityBaseStyle: `color:${communityBase}`,
+      otrosBaseStyle: `color:${otrosBase}`,
+
+      tagStyleB2b: `${tagBase};background:${b2bTagBg};color:${b2bTagText}`,
+      tagStyleCommunity: `${tagBase};background:${communityTagBg};color:${communityTagText}`,
+      tagStyleOtros: `${tagBase};background:${otrosTagBg};color:${otrosTagText}`,
+
+      ctaPrimaryStyle: `font-family:'PT Sans',sans-serif;font-size:13px;font-weight:500;padding:12px 22px;border-radius:8px;background:${b2bBase};color:${dark ? '#17140F' : '#FAF7F1'};display:inline-flex;align-items:center`,
+      ctaPrimaryHover: `background:${dark ? '#7C98D4' : '#33456E'}`,
+      ctaSecondaryStyle: `font-family:'PT Sans',sans-serif;font-size:13px;font-weight:500;padding:12px 22px;border-radius:8px;border:0.5px solid ${border};color:${text};display:inline-flex;align-items:center`,
+      ctaSecondaryHover: `border-color:${text}`,
+
+      leadCardStyle: `display:flex;flex-wrap:wrap;gap:32px;background:${surface};border:0.5px solid ${border};border-radius:12px;padding:clamp(20px,3vw,32px)`,
+      secondaryCardStyle: `display:flex;flex-wrap:wrap;gap:28px;background:${surface};border:0.5px solid ${border};border-radius:12px;padding:clamp(18px,2.5vw,28px)`,
+      tertiaryGridStyle: `display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px`,
+      tertiaryCardStyle: `display:flex;flex-direction:column;gap:10px;background:${surface};border:0.5px solid ${border};border-radius:12px;padding:16px`,
+
+      stackChipStyle: `font-family:'PT Mono',monospace;font-size:12px;padding:5px 12px;border-radius:6px;border:0.5px solid ${border};color:${textSecondary}`,
+
+      darkToggleStyle: `width:28px;height:28px;border-radius:8px;border:0.5px solid ${border};background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer`,
+      darkToggleHover: `border-color:${text}`,
+      darkDotStyle: `width:12px;height:12px;border-radius:50%;background:${text}`,
+
+      toggleDark: () => this.setState(s => ({ dark: !s.dark })),
+
+      overlayOpen: this.state.overlayOpen,
+      openOverlay: this.openOverlay,
+      closeOverlay: this.closeOverlay,
+      stopPropagation: (e) => e.stopPropagation(),
+
+      leadCardStyleClickable: `display:flex;flex-wrap:wrap;gap:32px;background:${surface};border:0.5px solid ${border};border-radius:12px;padding:clamp(20px,3vw,32px);cursor:pointer`,
+
+      overlayBackdropStyle: `position:fixed;inset:0;background:${dark ? 'rgba(0,0,0,0.6)' : 'rgba(33,29,23,0.4)'};display:flex;align-items:flex-start;justify-content:center;padding:clamp(16px,4vw,64px) clamp(12px,3vw,24px);overflow-y:auto;z-index:100`,
+      overlayPanelStyle: `background:${bg};border:0.5px solid ${border};border-radius:12px;max-width:760px;width:100%;position:relative;padding:clamp(28px,5vw,56px);display:flex;flex-direction:column;gap:28px`,
+      overlayCloseStyle: `position:absolute;top:20px;right:20px;width:32px;height:32px;border-radius:8px;border:0.5px solid ${border};background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center`,
+      overlayCloseHover: `border-color:${text}`,
+      overlayCloseLineStyle: `width:14px;height:1.5px;background:${text};position:absolute;transform:rotate(45deg)`,
+      overlayCloseLineStyle2: `width:14px;height:1.5px;background:${text};position:absolute;transform:rotate(-45deg)`,
+      overlayLabelStyle: `font-family:'PT Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:${textMuted}`,
+      overlayH2Style: `font-family:'PT Sans',sans-serif;font-weight:700;font-size:clamp(22px,3.5vw,28px);color:${text}`,
+      overlayBodyStyle: `font-family:'PT Sans',sans-serif;font-size:14px;line-height:1.7;color:${textSecondary}`,
+      overlayMetricsRowStyle: `display:flex;gap:clamp(20px,4vw,40px);flex-wrap:wrap;padding:20px 0;border-top:0.5px solid ${border};border-bottom:0.5px solid ${border}`,
+      overlaySubheadStyle: `font-family:'PT Sans',sans-serif;font-weight:500;font-size:13px;color:${text}`,
+      overlayChipStyle: `font-family:'PT Mono',monospace;font-size:12px;padding:5px 12px;border-radius:6px;border:0.5px solid ${border};color:${textSecondary}`,
+      overlayNoteStyle: `font-family:'PT Sans',sans-serif;font-size:13px;line-height:1.6;color:${textMuted};border-left:2px solid ${border};padding-left:12px`,
+
+      handleSubmit: (e) => e.preventDefault(),
+      contactGridStyle: `display:grid;grid-template-columns:minmax(280px,1fr) minmax(220px,280px);gap:24px;width:100%`,
+      contactFormStyle: `display:flex;flex-direction:column;gap:16px;background:${surface};border:0.5px solid ${border};border-radius:12px;padding:clamp(20px,3vw,28px)`,
+      formLabelStyle: `font-family:'PT Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:${textMuted}`,
+      formInputStyle: `font-family:'PT Sans',sans-serif;font-size:14px;background:${bg};border:0.5px solid ${border};border-radius:8px;padding:10px 12px;color:${text};outline:none`,
+      formTextareaStyle: `font-family:'PT Sans',sans-serif;font-size:14px;background:${bg};border:0.5px solid ${border};border-radius:8px;padding:10px 12px;color:${text};outline:none;resize:vertical`,
+      contactCardsColStyle: `display:flex;flex-direction:column;gap:12px`,
+      contactCardStyle: `display:flex;flex-direction:column;gap:4px;background:${surface};border:0.5px solid ${border};border-radius:12px;padding:14px 16px`,
+      contactCardHover: `border-color:${text}`
+    };
+  }
+}
+
+</script>
+</body>
+</html>
