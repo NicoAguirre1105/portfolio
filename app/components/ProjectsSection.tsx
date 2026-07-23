@@ -1,12 +1,14 @@
 import Image from "next/image";
 import { ImagePlaceholder, Metric, Section, Tag } from "./ui";
-import { airecomprimido, mafiaAzulgrana, tertiaryProjects } from "../data/content";
+import { airecomprimido, cafeLuchita, mafiaAzulgrana, telegramBot } from "../data/content";
+
+type TertiaryCaseStudy = typeof telegramBot | typeof cafeLuchita;
 
 function LeadProjectCard({ onOpen }: { onOpen: () => void }) {
   return (
     <button
       onClick={onOpen}
-      className="flex flex-wrap gap-8 rounded-xl border border-border bg-surface p-5 text-left sm:p-8"
+      className="flex cursor-pointer flex-wrap gap-8 rounded-xl border border-border bg-surface p-5 text-left transition-transform hover:scale-[1.02] sm:p-8"
     >
       <div className="relative aspect-[1901/1078] min-w-[280px] flex-1 basis-[380px] self-center overflow-hidden rounded-xl border border-border bg-surface">
         <Image
@@ -39,7 +41,7 @@ function SecondaryProjectCard({ onOpen }: { onOpen: () => void }) {
   return (
     <button
       onClick={onOpen}
-      className="flex flex-wrap gap-7 rounded-xl border border-border bg-surface p-[18px] text-left sm:p-7"
+      className="flex cursor-pointer flex-wrap gap-7 rounded-xl border border-border bg-surface p-[18px] text-left transition-transform hover:scale-[1.02] sm:p-7"
     >
       <div className="relative aspect-[1901/1078] min-w-[260px] flex-1 basis-[320px] self-center overflow-hidden rounded-xl border border-border bg-surface">
         <Image
@@ -66,21 +68,47 @@ function SecondaryProjectCard({ onOpen }: { onOpen: () => void }) {
   );
 }
 
-function TertiaryProjectCard({ project }: { project: (typeof tertiaryProjects)[number] }) {
+function TertiaryCaseStudyCard({
+  project,
+  image,
+  onOpen,
+}: {
+  project: TertiaryCaseStudy;
+  image?: { src: string; alt: string };
+  onOpen: () => void;
+}) {
   return (
-    <div className="flex flex-col gap-2.5 rounded-xl border border-border bg-surface p-4">
-      <ImagePlaceholder label={project.label} className="h-[180px] w-full" />
-      <Tag tone="otros">OTROS</Tag>
+    <button
+      onClick={onOpen}
+      className="flex cursor-pointer flex-col gap-2.5 rounded-xl border border-border bg-surface p-4 text-left transition-transform hover:scale-[1.02]"
+    >
+      {image ? (
+        <div className="relative aspect-[1901/1078] w-full overflow-hidden rounded-xl border border-border bg-surface">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes="(min-width: 640px) 260px, 100vw"
+            className="object-contain"
+          />
+        </div>
+      ) : (
+        <ImagePlaceholder
+          label={`Captura — ${project.title}`}
+          className="aspect-[1901/1078] w-full"
+        />
+      )}
+      <Tag tone={project.tag}>{project.tagLabel}</Tag>
       <h3 className="font-sans text-[15px] font-bold">{project.title}</h3>
-      <p className="text-[13px] leading-relaxed text-ink-soft">{project.description}</p>
-    </div>
+      <p className="text-[13px] leading-relaxed text-ink-soft">{project.cardDescription}</p>
+    </button>
   );
 }
 
 export function ProjectsSection({
   onOpenCaseStudy,
 }: {
-  onOpenCaseStudy: (id: "airecomprimido" | "mafia") => void;
+  onOpenCaseStudy: (id: "airecomprimido" | "mafia" | "telegram-bot" | "cafe-luchita") => void;
 }) {
   return (
     <Section id="proyectos" className="flex flex-col gap-6 py-[clamp(40px,6vw,64px)] sm:gap-8">
@@ -88,9 +116,16 @@ export function ProjectsSection({
       <LeadProjectCard onOpen={() => onOpenCaseStudy("airecomprimido")} />
       <SecondaryProjectCard onOpen={() => onOpenCaseStudy("mafia")} />
       <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5">
-        {tertiaryProjects.map((project) => (
-          <TertiaryProjectCard key={project.id} project={project} />
-        ))}
+        <TertiaryCaseStudyCard
+          project={telegramBot}
+          image={{ src: "/projects/telegram-bot.png", alt: "Captura del bot de Telegram" }}
+          onOpen={() => onOpenCaseStudy("telegram-bot")}
+        />
+        <TertiaryCaseStudyCard
+          project={cafeLuchita}
+          image={{ src: "/projects/cafeluchita.png", alt: "Captura del sitio de Café Luchita" }}
+          onOpen={() => onOpenCaseStudy("cafe-luchita")}
+        />
       </div>
     </Section>
   );

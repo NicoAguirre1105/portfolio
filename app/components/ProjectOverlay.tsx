@@ -1,16 +1,17 @@
 import { Chip, Metric, Tag } from "./ui";
-import type { airecomprimido, mafiaAzulgrana } from "../data/content";
+import type { airecomprimido, cafeLuchita, mafiaAzulgrana, telegramBot } from "../data/content";
 
 const eyebrowByTag = {
   b2b: "Resultado de negocio",
   community: "Resultado de comunidad",
+  otros: "Decisión de producto",
 } as const;
 
 export function ProjectOverlay({
   project,
   onClose,
 }: {
-  project: typeof airecomprimido | typeof mafiaAzulgrana;
+  project: typeof airecomprimido | typeof mafiaAzulgrana | typeof telegramBot | typeof cafeLuchita;
   onClose: () => void;
 }) {
   return (

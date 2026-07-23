@@ -49,6 +49,7 @@ export function ImagePlaceholder({
 const metricColors = {
   b2b: "text-b2b",
   community: "text-community",
+  otros: "text-otros",
 } as const;
 
 export function Metric({

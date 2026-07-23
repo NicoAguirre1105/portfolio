@@ -8,11 +8,13 @@ import { AboutSection } from "./components/AboutSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 import { ProjectOverlay } from "./components/ProjectOverlay";
-import { airecomprimido, mafiaAzulgrana } from "./data/content";
+import { airecomprimido, cafeLuchita, mafiaAzulgrana, telegramBot } from "./data/content";
 
 const caseStudies = {
   airecomprimido,
   mafia: mafiaAzulgrana,
+  "telegram-bot": telegramBot,
+  "cafe-luchita": cafeLuchita,
 };
 
 type CaseStudyId = keyof typeof caseStudies;

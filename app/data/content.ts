@@ -65,20 +65,52 @@ export const mafiaAzulgrana = {
   } as CaseStudyOverlay,
 };
 
-export const tertiaryProjects = [
-  {
-    id: "cafe-luchita",
-    label: "Captura — Café Luchita",
-    title: "Café Luchita",
-    description: "Landing e identidad digital para una cafetería de especialidad.",
-  },
-  {
-    id: "telegram-bot",
-    label: "Captura — Telegram Bot",
-    title: "Telegram Bot",
-    description: "Bot para automatizar pedidos y notificaciones de un negocio pequeño.",
-  },
-];
+export const cafeLuchita = {
+  tag: "otros" as const,
+  tagLabel: "OTROS",
+  title: "Café Luchita",
+  cardDescription:
+    "Landing de presentación para un café de origen de Loja: historia verificable, proceso del grano y pedidos por WhatsApp —la prueba de seriedad que faltó la vez que alguien preguntó por exportarlo.",
+  metrics: [{ value: "v2.0.0", label: "en iteración activa" }] as ProjectMetric[],
+  overlay: {
+    before:
+      "Café Luchita recibió una llamada real: alguien evaluando una muestra de café para posible exportación a EE. UU. Parte del proceso pedía algo simple en apariencia —dominio propio, sitio web. No lo tenían. La conversación no avanzó, no porque el café no fuera suficientemente bueno, sino porque en el momento exacto en que alguien quiso verificar que había una operación seria detrás, no había nada que mostrarle.",
+    decision: [
+      "La tentación era tratar el sitio como un embudo de conversión, al estilo B2B. No tiene sentido para café: nadie compra café por primera vez por copy persuasivo, lo compra porque lo probó o confía en quien lo vende. Una landing no puede transmitir sabor ni aroma, y prometer eso sería construir sobre algo que el sitio no puede cumplir. Lo que sí puede hacer es lo que faltó en esa llamada: ser la prueba de seriedad que alguien pide antes de seguir la conversación.",
+      "Por eso el sitio se construyó como carta de presentación, no como tienda: una historia de origen específica y verificable —Cararango, cultivo a 1.700 m.s.n.m. bajo sombra—, una línea de tiempo que arranca en 1958, el registro sanitario visible en el hero, y el proceso completo del grano en seis pasos con detalle técnico real. Nada de esto vende directo; junto, demuestra que detrás del sitio hay alguien que conoce su oficio. El pedido en sí se resolvió sin fricción: precios claros y un flujo directo a WhatsApp, sin carrito ni checkout para un volumen que todavía no lo necesita.",
+    ],
+    architecture:
+      "Next.js con TypeScript y Tailwind cubre exactamente lo que el sitio necesita: contenido estático rápido, sin backend ni base de datos, porque no hay transacciones que procesar —los pedidos se cierran por WhatsApp. Fue una decisión de alcance tan deliberada como cualquier otra: no construir e-commerce que Café Luchita no necesita hoy. Vercel lo mantiene corriendo sin costo de infraestructura que una empresa de este tamaño tenga que justificar.",
+    after:
+      "No hay cifra de conversión que mostrar, y forzar una sería deshonesto con lo que este proyecto es. Lo real: la próxima vez que le pidan un sitio a Café Luchita —un comprador de exportación, alguien evaluando el convenio de venta al por mayor, o cualquiera verificando que la empresa es seria— la respuesta ya no es un vacío. El sitio sigue en producción y en iteración activa (v2.0.0).",
+    stack: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
+    note: "Este es el proyecto con menos métricas de los cuatro, y vale decirlo así de directo: para café, la decisión de compra depende del sabor y el aroma, algo que ninguna landing transmite. El valor de este sitio no se mide en conversión, se mide en que la próxima vez alguien tenga dónde mirar.",
+  } as CaseStudyOverlay,
+};
+
+export const telegramBot = {
+  tag: "otros" as const,
+  tagLabel: "OTROS",
+  title: "Telegram Bot",
+  cardDescription:
+    "Bot de Telegram que clasifica gastos personales y datos de negocio por lenguaje natural, sin pedirle al usuario cambiar su forma de escribir. Reemplazó días armando Excel a mano por centavos de costo operativo al mes.",
+  metrics: [{ value: "$0.25–0.30", label: "costo operativo/mes" }] as ProjectMetric[],
+  overlay: {
+    before:
+      "El usuario llevaba sus finanzas escribiéndose a sí mismo en un chat, informal y en el momento. A fin de mes le tocaba pasar todo eso a mano a una tabla de Excel —uno o dos días completos. Ya había probado apps de gastos antes; ninguna se le pegó, porque llenar un formulario cada vez que compraba algo rompía la forma en la que ya registraba las cosas.",
+    decision: [
+      "El error fácil era construir una app de gastos más, con mejor diseño. Pero el problema nunca fue la app —era que toda solución existente le pedía a la persona cambiar su hábito para adaptarse a la herramienta. La solución tenía que adaptarse al hábito, no al revés.",
+      "Dos decisiones lo resolvieron. Telegram en vez de WhatsApp: la Bot API no tiene el costo recurrente que sí tiene WhatsApp Business API, y todo el punto era ahorrarle esfuerzo, no sumarle un gasto fijo. Y la pieza que hace funcionar todo: integrar la API de Claude para interpretar los mensajes tal como el usuario ya los escribía, sin categorías que llenar a mano. 'Gasté 5 en pan' se clasifica y sube solo a una hoja de cálculo en su propio Google Drive, con resumen mensual y gráficos por categoría incluidos.",
+      "Días después, el usuario pidió lo mismo para su negocio —el mismo patrón, entregas y deudas anotadas a mano. Antes de escribir código, tocaba resolver una pregunta de arquitectura real: ¿un segundo bot, o extender el mismo para los dos dominios? Se evaluó el costo de tokens y la complejidad de mantener dos bots contra uno solo, y ambos favorecían un único bot. El mismo sistema hoy clasifica gastos personales y datos de negocio —stock, ventas, deudas por cliente— sin duplicar infraestructura.",
+    ],
+    architecture:
+      "Telegram Bot API resuelve la plataforma sin costo recurrente, sobre una interfaz que el usuario ya usaba a diario. La API de Claude interpreta lenguaje informal y sin estructura y lo convierte en datos categorizados de forma confiable —la pieza que permite que el usuario no cambie cómo escribe. Google Sheets API entrega el resultado dentro de su propio Google Drive, en una herramienta que ya sabía usar: sin base de datos nueva, sin dashboard que aprender, sin nada adicional que mantener de su lado.",
+    after:
+      "No hay tráfico ni métricas de negocio que mostrar —el resultado es que el usuario lo sigue usando, no volvió a las hojas de Excel manuales, y pidió una segunda función en vez de abandonar la primera. El costo operativo combinado de los dos flujos (gastos personales y negocio) quedó en 25-30 centavos al mes.",
+    stack: ["Telegram Bot API", "Claude API", "Google Sheets API"],
+    note: "El proyecto también deja algo concreto sobre cómo pienso los sistemas: cuando surgió una necesidad nueva, la respuesta no fue construir más —fue evaluar primero si construir más tenía sentido, y en este caso, un solo bot bastaba.",
+  } as CaseStudyOverlay,
+};
 
 export const countryCodes = [
   { code: "+93", country: "Afganistán" },
