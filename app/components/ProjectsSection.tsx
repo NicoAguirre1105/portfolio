@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ImagePlaceholder, Metric, Section, Tag } from "./ui";
 import { airecomprimido, mafiaAzulgrana, tertiaryProjects } from "../data/content";
 
@@ -7,10 +8,14 @@ function LeadProjectCard({ onOpen }: { onOpen: () => void }) {
       onClick={onOpen}
       className="flex flex-wrap gap-8 rounded-xl border border-border bg-surface p-5 text-left sm:p-8"
     >
-      <div className="min-w-[280px] flex-1 basis-[380px]">
-        <ImagePlaceholder
-          label="Captura del panel — Airecomprimido"
-          className="h-full min-h-[280px] w-full"
+      <div className="relative min-w-[280px] flex-1 basis-[380px] self-center overflow-hidden rounded-xl border border-border">
+        <Image
+          src="/projects/airecomprimido.png"
+          alt="Captura del sitio de Airecomprimido"
+          width={1892}
+          height={866}
+          sizes="(min-width: 640px) 380px, 100vw"
+          className="h-auto w-full"
         />
       </div>
       <div className="flex min-w-[280px] flex-1 basis-[380px] flex-col justify-center gap-4">

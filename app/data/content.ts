@@ -5,23 +5,26 @@ export interface ProjectMetric {
 
 export const airecomprimido = {
   tag: "b2b" as const,
-  title: "Airecomprimido",
+  title: "AIRECOMPRIMIDO EC S.A.S",
   cardDescription:
-    "Reemplacé el proceso de reportes en PDF por un panel que genera cotizaciones en minutos. El cliente ahora cobra un premium por el tiempo de respuesta.",
+    "Sistema de reportes de mantenimiento con QR físico en cada compresor: el técnico escanea y ve el historial al instante. El cliente cobra un precio premium citando ese historial como diferenciador.",
   metrics: [
-    { value: "0", label: "re-solicitudes" },
-    { value: "+30%", label: "cotizaciones cerradas" },
-    { value: "615", label: "visitas/semana" },
+    { value: "0", label: "re-solicitudes por correo" },
+    { value: "+30%", label: "cotizaciones generadas" },
   ] as ProjectMetric[],
   overlay: {
     before:
-      "El cliente cotizaba por PDF: cada solicitud implicaba ida y vuelta por correo, re-solicitudes por datos faltantes y varios días de espera antes de cerrar.",
+      "Cada mantenimiento terminaba en un PDF por correo. Cuando ese correo se perdía —inbox equivocado, sin acceso para el técnico en planta— la única salida era reenviarlo: entre 4 y 8 veces por semana, tiempo administrativo que no generaba valor, solo tapaba un problema que el propio sistema creaba.",
+    decision: [
+      "La pregunta no era cómo digitalizar el PDF, sino quién necesita el reporte y dónde está en el momento en que lo necesita: un técnico junto al compresor, con las manos ocupadas, muchas veces en medio de una falla. Una app propia quedó descartada —nadie instala una app para un dato que consulta una vez cada tanto—, y un login universal era la misma fricción del correo, solo que en otra pantalla.",
+      "La solución fue un código QR físico en cada compresor, vinculado a su ficha. Apuntas, escaneas, ves el historial de esa máquina puntual, sin instalar nada ni pedir credenciales. Esa misma decisión terminó siendo también el diferenciador frente a la competencia: ningún otro proveedor de la zona ofrece verificación instantánea in situ.",
+    ],
+    architecture:
+      "Next.js unifica catálogo público (rápido e indexable, para captar cotizaciones nuevas), historial por cliente y panel admin en un solo proyecto —nada de tres sistemas que alguien sin equipo técnico tendría que sostener. Supabase modela la jerarquía de acceso (empresa / área / equipo) con row-level security en la base de datos en vez de un sistema de permisos hecho a mano: menos superficie de error sobre datos operativos reales. TypeScript corre en todo el proyecto porque esto no es contenido decorativo — son registros de mantenimiento real.",
     after:
-      "Reemplacé el proceso por un panel web donde el cliente arma la cotización en minutos, con validación en el momento. Cero re-solicitudes desde que está en producción, y ahora cobra un premium por el tiempo de respuesta.",
-    process:
-      "Empecé mapeando el flujo real de cotización con el cliente, no el que asumía que existía. El panel se construyó en iteraciones cortas, probando cada versión con cotizaciones reales antes de seguir.",
-    stack: ["React", "TypeScript", "Next.js", "PostgreSQL"],
-    note: "El módulo de reportes históricos todavía está en desarrollo — por ahora el panel cubre cotización y seguimiento activo.",
+      "Las re-solicitudes de reportes bajaron a cero: el dato vive donde está la máquina, no en un inbox. Las cotizaciones generadas desde el sitio subieron 30% desde el lanzamiento. Y el efecto que más le importa al cliente: ahora cobra un precio premium por su servicio, citando el historial transparente como diferenciador frente a otros proveedores —verificable por cualquiera que escanee el compresor.",
+    stack: ["Next.js", "TypeScript", "Supabase", "cPanel"],
+    note: "Que el sistema fuera fácil de mantener era un requisito, no un extra: el equipo de AIRECOMPRIMIDO —sin conocimiento técnico— da de alta unidades nuevas, genera su QR y carga reportes desde el panel admin, sin depender de mí para el día a día.",
   },
 };
 

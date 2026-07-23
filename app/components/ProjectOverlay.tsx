@@ -32,11 +32,25 @@ export function ProjectOverlay({ open, onClose }: { open: boolean; onClose: () =
           </h2>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <span className="text-[13px] font-medium">Antes</span>
+        <div className="flex flex-col gap-3">
+          <span className="text-lg font-bold">El problema</span>
           <p className="text-sm leading-[1.7] text-ink-soft">{airecomprimido.overlay.before}</p>
-          <span className="text-[13px] font-medium">Después</span>
-          <p className="text-sm leading-[1.7] text-ink-soft">{airecomprimido.overlay.after}</p>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <span className="text-lg font-bold">La decisión clave</span>
+          {airecomprimido.overlay.decision.map((paragraph) => (
+            <p key={paragraph} className="text-sm leading-[1.7] text-ink-soft">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <span className="text-lg font-bold">Arquitectura</span>
+          <p className="text-sm leading-[1.7] text-ink-soft">
+            {airecomprimido.overlay.architecture}
+          </p>
         </div>
 
         <div className="flex flex-wrap gap-[clamp(20px,4vw,40px)] border-y border-border py-5">
@@ -46,12 +60,12 @@ export function ProjectOverlay({ open, onClose }: { open: boolean; onClose: () =
         </div>
 
         <div className="flex flex-col gap-3">
-          <span className="text-[13px] font-medium">Proceso</span>
-          <p className="text-sm leading-[1.7] text-ink-soft">{airecomprimido.overlay.process}</p>
+          <span className="text-lg font-bold">El resultado</span>
+          <p className="text-sm leading-[1.7] text-ink-soft">{airecomprimido.overlay.after}</p>
         </div>
 
         <div className="flex flex-col gap-3">
-          <span className="text-[13px] font-medium">Stack</span>
+          <span className="text-lg font-bold">Stack</span>
           <div className="flex flex-wrap gap-2">
             {airecomprimido.overlay.stack.map((tech) => (
               <Chip key={tech}>{tech}</Chip>
