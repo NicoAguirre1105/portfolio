@@ -27,7 +27,7 @@ export function AboutSection() {
         <div className="flex min-w-[280px] max-w-[640px] flex-1 flex-col gap-5">
           <h2 className="font-sans text-[clamp(22px,3.5vw,28px)] font-bold">Sobre mí</h2>
           <p className="text-[15px] leading-[1.7] text-ink-soft">
-            Soy Nicolás Aguirre, desarrollador web freelance. Construyo herramientas internas y
+            Soy Nicolas Aguirre, desarrollador web freelance. Construyo herramientas internas y
             sistemas que reemplazan procesos manuales y propensos a errores por software que los
             equipos realmente usan.
           </p>
