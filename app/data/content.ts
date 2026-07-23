@@ -51,15 +51,6 @@ export const tertiaryProjects = [
   },
 ];
 
-export const about = {
-  paragraphs: [
-    "Vengo de matemática y ciencias de la computación — eso se nota en cómo pienso los sistemas antes de escribir una línea de CSS.",
-    "Trabajo como freelance construyendo herramientas internas y paneles para negocios B2B: menos landing pages, más flujos que un equipo usa todos los días para cotizar, reportar o cerrar trabajo.",
-    "Fuera de eso mantengo un par de proyectos propios — comunidad y bots — donde pruebo cosas sin el peso de un cliente encima.",
-  ],
-  stack: ["React", "TypeScript", "Next.js", "Tailwind", "PostgreSQL", "Figma"],
-};
-
 export const countryCodes = [
   { code: "+93", country: "Afganistán" },
   { code: "+355", country: "Albania" },
