@@ -258,10 +258,16 @@ export const countryCodes = [
   { code: "+263", country: "Zimbabue" },
 ];
 
+export const email = "nicofrancis2002@gmail.com";
+
+export const socialLinks = [
+  { label: "Upwork", href: "https://www.upwork.com/freelancers/~0119768418da132581" },
+  { label: "Contra", href: "https://contra.com/nicolas_aguirre_4oh12v47" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/nicolas-aguirre-5a2a483ab/" },
+];
+
+// ponytail: no link requested for these two — rendered as plain text, not <a>
 export const contactLinks = [
-  { label: "Email", value: "hola@nicolasaguirre.dev", href: "mailto:hola@nicolasaguirre.dev" },
-  { label: "Upwork", value: "Ver perfil", href: "#" },
-  { label: "Contra", value: "Ver perfil", href: "#" },
-  { label: "LinkedIn", value: "Conectar", href: "#" },
-  { label: "Telegram", value: "@nicolasaguirre", href: "#" },
+  { label: "Telegram / WhatsApp", value: "@nicof1105" },
+  { label: "Teléfono", value: "+7 911 958 3150 / +593 987623013" },
 ];

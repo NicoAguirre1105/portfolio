@@ -15,9 +15,9 @@ function LeadProjectCard({ onOpen }: { onOpen: () => void }) {
       </div>
       <div className="flex min-w-[280px] flex-1 basis-[380px] flex-col justify-center gap-4">
         <Tag tone={airecomprimido.tag}>B2B</Tag>
-        <h2 className="font-sans text-[clamp(20px,3vw,22px)] font-bold">
+        <h3 className="font-sans text-[clamp(20px,3vw,22px)] font-bold">
           {airecomprimido.title}
-        </h2>
+        </h3>
         <p className="text-sm leading-relaxed text-ink-soft">
           {airecomprimido.cardDescription}
         </p>
@@ -72,6 +72,7 @@ function TertiaryProjectCard({ project }: { project: (typeof tertiaryProjects)[n
 export function ProjectsSection({ onOpenCaseStudy }: { onOpenCaseStudy: () => void }) {
   return (
     <Section id="proyectos" className="flex flex-col gap-6 py-[clamp(40px,6vw,64px)] sm:gap-8">
+      <h2 className="font-sans text-[clamp(22px,3.5vw,28px)] font-bold">Proyectos</h2>
       <LeadProjectCard onOpen={onOpenCaseStudy} />
       <SecondaryProjectCard />
       <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5">

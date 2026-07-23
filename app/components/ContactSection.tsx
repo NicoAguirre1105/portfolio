@@ -1,12 +1,38 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { Button, Section } from "./ui";
+import { Button, HoverLabel, Section } from "./ui";
 import { CountryCodeSelect } from "./CountryCodeSelect";
-import { contactLinks } from "../data/content";
+import { socialIcons } from "./BrandIcons";
+import { contactLinks, email, socialLinks } from "../data/content";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnjebewe";
 
 type SubmitStatus = "idle" | "sending" | "success" | "error";
+
+// ponytail: keeps the raw address out of the server-rendered HTML — only
+// lands in the DOM after a click, so plain HTML-scraping bots never see it.
+function EmailCard() {
+  const [revealed, setRevealed] = useState(false);
+
+  return (
+    <div className="flex min-h-16 flex-col justify-center gap-1 rounded-xl border border-border bg-surface px-4 py-3.5">
+      <span className="font-mono text-[11px] uppercase tracking-wide text-ink-faint">Email</span>
+      {revealed ? (
+        <a href={`mailto:${email}`} className="text-[13px] hover:text-ink">
+          {email}
+        </a>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setRevealed(true)}
+          className="w-max text-[13px] text-ink-soft hover:text-ink"
+        >
+          Mostrar email
+        </button>
+      )}
+    </div>
+  );
+}
 
 export function ContactSection() {
   const [status, setStatus] = useState<SubmitStatus>("idle");
@@ -109,23 +135,43 @@ export function ContactSection() {
           )}
           {status === "error" && (
             <p className="text-[13px] text-ink-soft">
-              Hubo un error al enviar. Intenta de nuevo o escríbeme directo a hola@nicolasaguirre.dev.
+              Hubo un error al enviar. Intenta de nuevo o escríbeme directo a {email}.
             </p>
           )}
         </form>
 
         <div className="flex flex-col gap-3">
+          <div className="flex gap-3">
+            {socialLinks.map((s) => {
+              const Icon = socialIcons[s.label];
+              return (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="group relative flex aspect-square h-16 items-center justify-center rounded-xl border border-border bg-surface text-ink-soft hover:border-ink hover:text-ink"
+                >
+                  <Icon className="h-7 w-7" />
+                  <HoverLabel label={s.label} />
+                </a>
+              );
+            })}
+          </div>
+
+          <EmailCard />
+
           {contactLinks.map((c) => (
-            <a
+            <div
               key={c.label}
-              href={c.href}
-              className="flex flex-col gap-1 rounded-xl border border-border bg-surface px-4 py-3.5 hover:border-ink"
+              className="flex min-h-16 flex-col justify-center gap-1 rounded-xl border border-border bg-surface px-4 py-3.5"
             >
               <span className="font-mono text-[11px] uppercase tracking-wide text-ink-faint">
                 {c.label}
               </span>
               <span className="text-[13px]">{c.value}</span>
-            </a>
+            </div>
           ))}
         </div>
       </div>

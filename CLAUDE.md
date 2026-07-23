@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Nicolás Aguirre's personal portfolio — a single-page Next.js site (Spanish copy) showcasing freelance frontend/B2B work: hero, project cards (with an expandable case-study overlay for the lead project), about section, contact form, footer.
 
+**Copy voice**: all Spanish-language site copy (labels, placeholders, messages) must use Ecuadorian **tuteo** ("cuéntame", "tú", "escríbeme"), never rioplatense/Argentine **voseo** ("contame", "vos", "escribime"). The author is Ecuadorian; this applies to text written into the project's files, separate from whatever language Claude uses to talk to the user in chat.
+
 ## Tech Stack
 
 - **Framework**: Next.js 16 (App Router), React 19

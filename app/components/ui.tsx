@@ -115,6 +115,14 @@ export function Button({ variant = "primary", className = "", children, ...props
   );
 }
 
+export function HoverLabel({ label }: { label: string }) {
+  return (
+    <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-ink px-2 py-1 font-mono text-[11px] text-bg opacity-0 transition-opacity group-hover:opacity-100">
+      {label}
+    </span>
+  );
+}
+
 export function Section({
   id,
   className = "",
@@ -125,8 +133,8 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className={`px-page border-b border-border ${className}`}>
-      {children}
+    <section id={id} className="border-b border-border">
+      <div className={`px-page ${className}`}>{children}</div>
     </section>
   );
 }
