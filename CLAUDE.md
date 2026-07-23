@@ -12,6 +12,8 @@ Nicolás Aguirre's personal portfolio — a single-page Next.js site (Spanish co
 - **Styling**: Tailwind CSS v4 (CSS-first config via `@theme`, no `tailwind.config.js`)
 - **Fonts**: `next/font/google` — Unbounded (headings), PT Sans (body), PT Mono (labels/numbers)
 - **Language**: TypeScript, strict mode
+- **Forms**: contact form posts to Formspree (`https://formspree.io/f/xnjebewe`) via `fetch` + `FormData`, no form library
+- **Combobox/autocomplete**: `@headlessui/react` (`Combobox`) — the only UI dependency beyond Tailwind; used for the searchable country-code picker
 
 ## Commands
 
@@ -47,6 +49,15 @@ Nav/Hero/every section/Footer share one horizontal-padding rule (`clamp(20px,5vw
 ### Tailwind + dynamic class names
 
 Tailwind v4 only detects class names that appear as literal strings in source — it cannot see template-literal-constructed classes like `` `text-${color}` ``. Where a class must be chosen dynamically (see the `tagTones`/`metricColors` lookup objects in `app/components/ui.tsx`), map the variant to a **fully-written** class string in an object/switch first, then interpolate the lookup result. Don't reintroduce direct `` `text-${var}` `` interpolation.
+
+### Contact form
+
+`ContactSection` (`app/components/ContactSection.tsx`) is a real, wired-up form, not a mockup:
+
+- Submission reads the form via `new FormData(e.currentTarget)` (uncontrolled inputs — every field needs a `name` attribute) and POSTs to Formspree with `Accept: application/json`. Status (`idle`/`sending`/`success`/`error`) drives the submit button's label/disabled state and an inline message; there's no toast library.
+- The phone field is split into `CountryCodeSelect` (a Headless UI `Combobox`, see below) plus a plain `<input type="tel" name="phone">`. On submit, `countryCode` + `phone` are merged into a single `phone` value before POSTing so the Formspree notification shows one readable field instead of two.
+- `CountryCodeSelect` (`app/components/CountryCodeSelect.tsx`) holds its own `selected`/`query` React state — it is **not** a native `<select>`, so `form.reset()` on a native form does nothing to it. `ContactSection` works around this with a `formKey` counter passed as the component's `key`, incremented on successful submit to remount it back to its default country. Any other non-native form control added later needs the same treatment (or its own reset handling) if the form is expected to fully clear after sending.
+- The full country list (~195 countries, hand-maintained, Spanish names) lives in `countryCodes` in `app/data/content.ts` — this was a deliberate choice over pulling in a country-data package, since the repo already avoids new dependencies where a static list works. Keep it there rather than re-deriving it from a library later without reason.
 
 ### Design source (`design/`)
 

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Button, Section } from "./ui";
-import { contactLinks, countryCodes } from "../data/content";
+import { CountryCodeSelect } from "./CountryCodeSelect";
+import { contactLinks } from "../data/content";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnjebewe";
 
@@ -9,6 +10,7 @@ type SubmitStatus = "idle" | "sending" | "success" | "error";
 
 export function ContactSection() {
   const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [formKey, setFormKey] = useState(0);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -32,6 +34,7 @@ export function ContactSection() {
       if (res.ok) {
         setStatus("success");
         form.reset();
+        setFormKey((k) => k + 1);
       } else {
         setStatus("error");
       }
@@ -74,23 +77,14 @@ export function ContactSection() {
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="font-mono text-[11px] uppercase tracking-wide text-ink-faint">
-              Teléfono (opcional)
+              Teléfono
             </label>
             <div className="flex gap-2">
-              <select
-                name="countryCode"
-                defaultValue="+593"
-                className="rounded-lg border border-border bg-bg px-2 py-2.5 text-sm outline-none"
-              >
-                {countryCodes.map((c) => (
-                  <option key={c.country} value={c.code}>
-                    {c.code} {c.country}
-                  </option>
-                ))}
-              </select>
+              <CountryCodeSelect key={formKey} name="countryCode" required />
               <input
                 type="tel"
                 name="phone"
+                required
                 placeholder="999 999 999"
                 className="min-w-0 flex-1 rounded-lg border border-border bg-bg px-3 py-2.5 text-sm outline-none"
               />
@@ -101,7 +95,7 @@ export function ContactSection() {
               Mensaje
             </label>
             <textarea
-              placeholder="Contame en qué estás trabajando"
+              placeholder="Cuéntame en qué estás trabajando"
               name="message"
               rows={4}
               className="resize-y rounded-lg border border-border bg-bg px-3 py-2.5 text-sm outline-none"
