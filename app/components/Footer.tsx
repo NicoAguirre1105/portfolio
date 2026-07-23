@@ -1,4 +1,3 @@
-import { LanguageSwitcher } from "./LanguageSwitcher";
 import { HoverLabel } from "./ui";
 import { socialIcons } from "./BrandIcons";
 import { socialLinks } from "../data/content";
@@ -7,7 +6,6 @@ export function Footer() {
   return (
     <footer className="px-page flex flex-wrap items-center justify-between gap-4 py-6">
       <span className="text-sm font-bold text-ink-soft">Nicolás Aguirre</span>
-      <LanguageSwitcher size="text-[11px]" activeClassName="text-ink-soft" />
       <div className="flex items-center gap-4 text-ink-soft">
         {socialLinks.map((s) => {
           const Icon = socialIcons[s.label];

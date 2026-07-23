@@ -10,7 +10,6 @@ import { Footer } from "./components/Footer";
 import { ProjectOverlay } from "./components/ProjectOverlay";
 
 export default function Home() {
-  const [dark, setDark] = useState(false);
   const [overlayOpen, setOverlayOpen] = useState(false);
 
   const openOverlay = () => {
@@ -24,10 +23,6 @@ export default function Home() {
   };
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-  }, [dark]);
-
-  useEffect(() => {
     if (!overlayOpen) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeOverlay();
@@ -38,7 +33,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-bg">
-      <Nav onToggleDark={() => setDark((d) => !d)} />
+      <Nav />
       <Hero />
       <ProjectsSection onOpenCaseStudy={openOverlay} />
       <AboutSection />
