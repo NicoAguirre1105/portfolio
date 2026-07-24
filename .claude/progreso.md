@@ -26,3 +26,4 @@ Estado del proyecto y qué falta. Actualizar esta lista a medida que se cierren 
 - Cards de contacto: Upwork/Contra/LinkedIn con logos SVG reales (`public/logos/`) + tooltip flotante en hover + escala leve en el footer; links reales a los tres perfiles.
 - Layout: contenido con max-width (1280px) centrado, bordes/fondos de sección full-bleed; hero a la altura del viewport (descontando el nav) con divisor exacto hacia Proyectos.
 - `CLAUDE.md` dividido por tema (`.claude/arquitectura.md`, `.claude/verificacion.md`, este archivo) para no cargar todo de entrada en cada sesión.
+- SEO/AEO/GEO: metadata completo en `app/layout.tsx` (OpenGraph, Twitter card, JSON-LD `Person`), `app/robots.ts`, `app/sitemap.ts`, `app/manifest.ts`, favicon/OG images generados desde `public/logos/logo.svg` y `logo_large.svg` (script en `scripts/generate-seo-images.mjs`, usa `sharp`), y `public/llms.txt` para motores basados en LLM. Dominio centralizado en `app/site-config.ts`.

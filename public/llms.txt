@@ -1,0 +1,19 @@
+# Nicolas Aguirre
+
+> Desarrollador web freelance full-stack. Construye herramientas internas y sistemas que reemplazan procesos manuales por software que los equipos realmente usan, y plataformas para comunidades online.
+
+Estudiante de último año de Matemática y Ciencias de la Computación en la Universidad Estatal de San Petersburgo, Rusia. Español nativo, inglés e ruso fluidos.
+
+## Proyectos
+
+- AIRECOMPRIMIDO EC S.A.S: sistema de reportes de mantenimiento para compresores industriales, con QR físico por unidad para acceso instantáneo al historial. Stack: Next.js, TypeScript, Supabase, cPanel.
+- Mafia Azul Grana: portal centralizado para la hinchada de Deportivo Quito (resultados, plantilla, cánticos digitalizados). Stack: Next.js, TypeScript, Supabase, Vercel.
+- Telegram Bot: bot que clasifica gastos personales y datos de negocio por lenguaje natural vía Telegram + Claude API + Google Sheets API.
+- Café Luchita: landing de presentación para un café de origen de Loja, Ecuador. Stack: Next.js, TypeScript, Tailwind, Vercel.
+
+## Contacto
+
+- Sitio: https://nicolasaguirre.dev
+- Upwork: https://www.upwork.com/freelancers/~0119768418da132581
+- Contra: https://contra.com/nicolas_aguirre_4oh12v47
+- LinkedIn: https://www.linkedin.com/in/nicolas-aguirre-5a2a483ab/
